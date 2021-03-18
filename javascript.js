@@ -12,6 +12,11 @@ function generatenewPass() {
   let uniqueCharacters = [];
   let newPass = "";
 
+
+
+// accepting & determining the password length 
+
+
  let passLength = prompt("Please enter the number of characters you want to use for your password. (Remember to keep between 8 and 128 characters long");
   passLength = parseInt(passLength);
   console.log(passLength);
@@ -22,6 +27,10 @@ function generatenewPass() {
   else {
     alert("The number of characters is " + passLength + ".");
   }
+
+
+
+// deternining what will happen when numbers, uppercase , lowercase , and symbols are inputed 
 
  let lowercase = confirm("Do you want to use lowercase letters?");
   if (lowercase == true){
@@ -44,6 +53,10 @@ function generatenewPass() {
     console.log(uniqueCharacters);
   }
 
+
+// assigning the length to a random mash up of the selected numbers, string, or symbol and adding them all to a string 
+
+
   for (let i = 0; i < passLength; i++) {
     let selectCharacters = Math.floor(Math.random() * uniqueCharacters.length);
     selectCharacters = uniqueCharacters[selectCharacters];
@@ -53,6 +66,8 @@ function generatenewPass() {
   return newPass;
 
 }
+
+//assigining the output/new password to the button 
 
 function writenewPass() {
   let newPass = generatenewPass();
