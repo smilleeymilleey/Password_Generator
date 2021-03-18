@@ -18,8 +18,8 @@ function generatenewPass() {
 
 
  let passLength = prompt("Please enter the number of characters you want to use for your password. (Remember to keep between 8 and 128 characters long");
-  passLength = parseInt(passLength);
-  console.log(passLength);
+   passLength = parseInt(passLength);
+ 
   if (isNaN(passLength) || 8 > passLength || passLength > 120){
     alert("Invalid Input");
     return;
@@ -35,22 +35,22 @@ function generatenewPass() {
  let lowercase = confirm("Do you want to use lowercase letters?");
   if (lowercase == true){
     uniqueCharacters = uniqueCharacters.concat(alphaLittle);
-    console.log(uniqueCharacters);
+    
   }
  let uppercase = confirm("Do you want to use uppercase letters?");
   if (uppercase == true){
     uniqueCharacters = uniqueCharacters.concat(alphaBig);
-    console.log(uniqueCharacters);
+    
   }
   let specialCharacters = confirm("Do you want to use any special symbols?");
   if (specialCharacters == true){
     uniqueCharacters = uniqueCharacters.concat(specialSymbols);
-    console.log(uniqueCharacters);
+    
   }
  let numbersOf = confirm("Do you want to use numbers?");
   if (numbersOf == true){
     uniqueCharacters = uniqueCharacters.concat(num);
-    console.log(uniqueCharacters);
+    
   }
 
 
@@ -59,8 +59,8 @@ function generatenewPass() {
 
   for (let i = 0; i < passLength; i++) {
     let selectCharacters = Math.floor(Math.random() * uniqueCharacters.length);
-    selectCharacters = uniqueCharacters[selectCharacters];
-    newPass = newPass.concat(selectCharacters);
+       selectCharacters = uniqueCharacters[selectCharacters];
+         newPass = newPass.concat(selectCharacters);
   }
 
   return newPass;
@@ -72,7 +72,7 @@ function generatenewPass() {
 function writenewPass() {
   let newPass = generatenewPass();
   let newPassText = document.querySelector("#password");
-  newPassText.value = newPass;
+    newPassText.value = newPass;
 
 }
 
