@@ -1,76 +1,64 @@
-// when button is clicked a prompt shows password criteria
-// prompt for length of password -between 8 and 120-
-// prompt for character type -lowercase, uppercase, numbers, and special characters-
+// Assignment Code
+var generateBtn = document.querySelector("#generate");
 
-// when prompts are answered the password is generated 
-// then the password is displayed in an alert or written to the page 
+// Write newPass to the #newPass input
 
-function generatePassword () {
-   let passLength;
-   let lowercase = true;
-   let uppercase = true; 
-   let numeric = true;
-   let specChar = true;
-   let setOfChar = [];
-   let password = [];
+function generatenewPass() {
 
-   let passwordLength= window.prompt("How many characters do you want your password to be?(must be between 8-120 characters long)", "");
-   let lowerCaseCharacters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-   let upperCaseCharacters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-   let numberCharacters = [1,2,3,4,5,6,7,8,9,0];
-   let specialCharacters = ["!","@","#","$","%","&","?"]
+  let alphaBig = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+  let alphaLittle = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+  let specialSymbols = ["!","@","#","$","%","&","?"];
+  let num = [1,2,3,4,5,6,7,8,9,0];
+  let uniqueCharacters = [];
+  let newPass = "";
 
-  //  adding different versions of possible arrays and randomizing 
-
-   let allCharacters = lowerCaseCharacters.concat(upperCaseCharacters, numberCharacters, specialCharacters);
-   
-  //  let allRandomCharacters = Math.floor(Math.random() * allCharacters.length)
-
-   passwordLength = parseInt(passwordLength);
-
- 
-   
-
-  //  setting password length 
-
-   if (isNaN(passwordLength) || 8 > passwordLength || passwordLength > 120) {
+ let passLength = prompt("Please enter the number of characters you want to use for your password. (Remember to keep between 8 and 128 characters long");
+  passLength = parseInt(passLength);
+  console.log(passLength);
+  if (isNaN(passLength) || 8 > passLength || passLength > 120){
     alert("Invalid Input");
-    // return;
-  } else {
-    alert("The number of characters is " + passwordLength + ".");
-  
+    return;
+  }
+  else {
+    alert("The number of characters is " + passLength + ".");
   }
 
-
-    lowercase = confirm("Do you want to use lowercase letter?")
-      if (lowercase == true) {
-      setofchar = setOfChar.concat(lowerCaseCharacters); 
-      }
-
-     uppercase = confirm("Do you want to use uppercase letters?")
-      if (uppercase == false) {
-    setofchar = setOfChar.concat(upperCaseCharacters)
+ let lowercase = confirm("Do you want to use lowercase letters?");
+  if (lowercase == true){
+    uniqueCharacters = uniqueCharacters.concat(alphaLittle);
+    console.log(uniqueCharacters);
   }
-     specChar = confirm("Do you want to use special characters?")
-      if (specChar == true){
-        setOfChar = setOfChar.concat(specialCharacters);
-      }
-     numeric = confirm ("Do you want to use numbers?")
-      if (numeric == true) {
-        setOfChar = setOfChar.concat(numberCharacters)
-      }
+ let uppercase = confirm("Do you want to use uppercase letters?");
+  if (uppercase == true){
+    uniqueCharacters = uniqueCharacters.concat(alphaBig);
+    console.log(uniqueCharacters);
+  }
+  let specialCharacters = confirm("Do you want to use any special symbols?");
+  if (specialCharacters == true){
+    uniqueCharacters = uniqueCharacters.concat(specialSymbols);
+    console.log(uniqueCharacters);
+  }
+ let numbersOf = confirm("Do you want to use numbers?");
+  if (numbersOf == true){
+    uniqueCharacters = uniqueCharacters.concat(num);
+    console.log(uniqueCharacters);
+  }
 
-     
+  for (let i = 0; i < passLength; i++) {
+    let selectCharacters = Math.floor(Math.random() * uniqueCharacters.length);
+    selectCharacters = uniqueCharacters[selectCharacters];
+    newPass = newPass.concat(selectCharacters);
+  }
 
-        for (let i = 0; i < passLength; i++) {
-          let charSelection = Math.floor(math.random() * setOfChar.length);
-          charSelection = setOfChar[chatSelection];
-          password = password.concat(characterselection); 
+  return newPass;
 
-      
-        }
-  
-};
+}
 
+function writenewPass() {
+  let newPass = generatenewPass();
+  let newPassText = document.querySelector("#password");
+  newPassText.value = newPass;
 
-generatePassword()
+}
+
+generateBtn.addEventListener("click", writenewPass);
